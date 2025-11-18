@@ -14,9 +14,7 @@ const app = express();
 // CORS Configuration for Production
 const allowedOrigins = [
   'http://localhost:3000',
-  'http://localhost:5000',
-  // Add your frontend deployment URL here after deploying
-  // Example: 'https://your-app.vercel.app'
+  'https://mern-blog-platform-7erb.onrender.com'
 ];
 
 app.use(cors({
