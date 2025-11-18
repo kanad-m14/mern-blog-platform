@@ -14,6 +14,7 @@ const app = express();
 // CORS Configuration for Production
 const allowedOrigins = [
   'http://localhost:3000',
+  'https://mern-blog-platform-swart.vercel.app',
   'https://mern-blog-platform-7erb.onrender.com'
 ];
 
