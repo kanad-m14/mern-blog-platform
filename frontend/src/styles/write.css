@@ -187,6 +187,7 @@
   padding: var(--spacing-lg);
   border-radius: var(--border-radius);
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .ai-helper-error p {
