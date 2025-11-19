@@ -136,10 +136,13 @@ class WritePage extends Component {
           aiRecommendations: recommendations,
           isLoadingAI: false
         });
-      } catch (error) {
-        console.error('AI Error Details:', error);
+      } 
+      catch (error) {
+        const fallbackRecs = this.getFallbackRecommendations();
+  
         this.setState({
-          aiError: `Failed to load recommendations: ${error.message}`,
+          aiRecommendations: fallbackRecs,
+          aiError: `API temporarily unavailable. Showing suggested topics instead.`,
           isLoadingAI: false
         });
       }
@@ -152,6 +155,36 @@ class WritePage extends Component {
       tags: recommendation.tags.join(', '),
       showAIHelper: false
     });
+  }
+
+  getFallbackRecommendations() {
+    return [
+      {
+        title: "The Rise of AI in Everyday Life",
+        description: "Explore how artificial intelligence is transforming our daily routines, from smart home devices to personalized recommendations. Discover the opportunities and challenges this technology brings.",
+        tags: ["technology", "AI", "innovation"]
+      },
+      {
+        title: "Building Better Habits for Success",
+        description: "Learn proven strategies for creating lasting habits that lead to personal and professional growth. Small changes can lead to remarkable transformations over time.",
+        tags: ["personal-development", "productivity", "lifestyle"]
+      },
+      {
+        title: "The Art of Mindful Living",
+        description: "Discover how practicing mindfulness can reduce stress, improve focus, and enhance overall well-being. Simple techniques you can start using today.",
+        tags: ["wellness", "mindfulness", "mental-health"]
+      },
+      {
+        title: "Remote Work: Tips for Staying Productive",
+        description: "Master the challenges of working from home with practical advice on time management, workspace setup, and maintaining work-life balance.",
+        tags: ["work", "productivity", "remote"]
+      },
+      {
+        title: "Sustainable Living for Beginners",
+        description: "Start your journey toward a more eco-friendly lifestyle with easy, actionable steps. Learn how small choices make a big environmental impact.",
+        tags: ["environment", "sustainability", "lifestyle"]
+      }
+    ];
   }
 
   async handleSubmit(event) {
